@@ -1,48 +1,53 @@
-distance = 0;
-dk = true;
-number = 3;
+CurrentTime = 0;
+condition = true;
+difference = 3;
+
+if(localStorage.length <2 ){
+    localStorage.setItem("CurrentTime", CurrentTime.toString());
+    localStorage.setItem("difference", difference.toString());
+}else{
+    CurrentTime = parseInt(localStorage.getItem("CurrentTime"), 10);
+    difference = parseInt(localStorage.getItem("difference"), 10);
+}
+
 (function () {
     const second = 1,
           minute = second * 60,
           hour = minute * 60,
           day = hour * 24;
-    // let birthday = Data.date;
-    // fetch("index.json").then(function(resp){
-    //     return resp.json();
-    // }).then(function(data){
-    //     console.log(data);
-    //     birthday = data.date;
-    //     console.log(birthday);
-    // });
     setInterval(function() {
-        if(dk == true){
-            distance = distance + 1/number;
+        if(condition == true){
+            CurrentTime = CurrentTime + 1/difference;
         }else{
-            distance = distance - 1 ;
+            CurrentTime = CurrentTime - 1 ;
         }
-        if(distance < 0){
-            _distance = -distance;
-            document.getElementById("days").innerText = -Math.floor(_distance / (day)),
-            document.getElementById("hours").innerText = -Math.floor((_distance % (day)) / (hour)),
-            document.getElementById("minutes").innerText = -Math.floor((_distance % (hour)) / (minute)),
-            document.getElementById("seconds").innerText = -Math.floor((_distance % (minute)) / second);
+        
+        if(CurrentTime < 0){
+            _CurrentTime = -CurrentTime;
+            document.getElementById("days").innerText = -Math.floor(_CurrentTime / (day)),
+            document.getElementById("hours").innerText = -Math.floor((_CurrentTime % (day)) / (hour)),
+            document.getElementById("minutes").innerText = -Math.floor((_CurrentTime % (hour)) / (minute)),
+            document.getElementById("seconds").innerText = -Math.floor((_CurrentTime % (minute)) / second);
         }
         else{
-            _distance = distance;
-            document.getElementById("days").innerText = Math.floor(_distance / (day)),
-            document.getElementById("hours").innerText = Math.floor((_distance % (day)) / (hour)),
-            document.getElementById("minutes").innerText = Math.floor((_distance % (hour)) / (minute)),
-            document.getElementById("seconds").innerText = Math.floor((_distance % (minute)) / second);
+            _CurrentTime = CurrentTime;
+            document.getElementById("days").innerText = Math.floor(_CurrentTime / (day)),
+            document.getElementById("hours").innerText = Math.floor((_CurrentTime % (day)) / (hour)),
+            document.getElementById("minutes").innerText = Math.floor((_CurrentTime % (hour)) / (minute)),
+            document.getElementById("seconds").innerText = Math.floor((_CurrentTime % (minute)) / second);
         }
+        localStorage.setItem("CurrentTime", CurrentTime.toString());
     }, 1000)
 }());
 
 function change1(){
-    dk = true;
-    console.log(dk);
+    condition = true;
 }
 
 function change2(){
-    dk = false;
-    console.log(dk);
+    condition = false;
+}
+
+function setDifference(){
+    condition = false;
 }
