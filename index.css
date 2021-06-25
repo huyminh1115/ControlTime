@@ -148,7 +148,7 @@
   /* copyright stuffs.. */
   p {
     text-align: center;
-    color: #55acee;
+    color: #333;
     padding-top: 20px;
   }
   @media all and (max-width: 768px) {

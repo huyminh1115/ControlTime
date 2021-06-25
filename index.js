@@ -59,3 +59,23 @@ function Pause(){
 function setDifference(){
     condition = false;
 }
+
+function Increase(){
+    difference++;
+    localStorage.setItem("difference", difference.toString());
+    UpdateDifference();
+}
+
+function Decrease(){
+    if (difference <= 1){
+    }
+    else{
+        difference--;
+        localStorage.setItem("difference", difference.toString());
+        UpdateDifference();
+    }
+}
+
+function UpdateDifference(){
+    document.getElementById("difference").innerHTML = "STUDY TIME = " + difference + " PLAY TIME";
+}
