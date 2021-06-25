@@ -1,5 +1,5 @@
 CurrentTime = 0;
-condition = 1;
+condition = 3;
 difference = 3;
 
 if(localStorage.length <2 ){
