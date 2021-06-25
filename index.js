@@ -1,5 +1,5 @@
 CurrentTime = 0;
-condition = true;
+condition = 1;
 difference = 3;
 
 if(localStorage.length <2 ){
@@ -16,10 +16,14 @@ if(localStorage.length <2 ){
           hour = minute * 60,
           day = hour * 24;
     setInterval(function() {
-        if(condition == true){
+        if(condition == 1){
             CurrentTime = CurrentTime + 1/difference;
-        }else{
+        }else if(condition == 2){
             CurrentTime = CurrentTime - 1 ;
+        }else if(condition == 3){
+            CurrentTime = CurrentTime;
+        }else{
+            condition = 1;
         }
         
         if(CurrentTime < 0){
@@ -40,12 +44,16 @@ if(localStorage.length <2 ){
     }, 1000)
 }());
 
-function change1(){
-    condition = true;
+function Study(){
+    condition = 1;
 }
 
-function change2(){
-    condition = false;
+function Play(){
+    condition = 2;
+}
+
+function Pause(){
+    condition = 3;
 }
 
 function setDifference(){
